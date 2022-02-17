@@ -35,11 +35,13 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
     /*
     gradle 5.x 이상에서는 다음과 같이 작성
      */
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
 }
 
 test {

@@ -1,6 +1,7 @@
 package com.dongjae.book.springboot.domain.posts;
 
 
+import com.dongjae.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import javax.persistence.*;
 실제 DB의 테이블과 매칭될 클래스이며 보통 Entity 클래스라고 부른다.
 jpa를
  */
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id // 해당 테이블의 PK 필드
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK의 생성 규칙
