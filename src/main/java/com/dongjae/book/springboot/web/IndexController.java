@@ -1,5 +1,7 @@
 package com.dongjae.book.springboot.web;
 
+import com.dongjae.book.springboot.config.auth.LoginUser;
+import com.dongjae.book.springboot.config.auth.dto.SessionUser;
 import com.dongjae.book.springboot.posts.PostsService;
 import com.dongjae.book.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
@@ -16,8 +20,11 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts",postsService.findAllDesc());
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
     // View resolver에 의해 src/main/resources/templates/index.mustache 가 실행
